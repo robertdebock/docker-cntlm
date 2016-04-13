@@ -12,12 +12,12 @@ ENV PASSNTLMHASH UNSET
 
 ADD etc/cntlm.conf /etc/cntlm.conf
 
-RUN sed -i "s/USERNAME/${USERNAME}/" /etc/cntlm.conf \
-    sed -i "s/DOMAIN/${DOMAIN}/" /etc/cntlm.conf \
-    sed -i "s/PROXY/${PROXY}/" /etc/cntlm.conf \
-    sed -i "s/LISTEN/${LISTEN}/" /etc/cntlm.conf \
-    sed -i "s/PASSLMHASH/${PASSLMHASH}/" /etc/cntlm.conf \
-    sed -i "s/PASSNTHASH/${PASSNTHASH}/" /etc/cntlm.conf \
+RUN sed -i "s/USERNAME/${USERNAME}/" /etc/cntlm.conf && \
+    sed -i "s/DOMAIN/${DOMAIN}/" /etc/cntlm.conf && \
+    sed -i "s/PROXY/${PROXY}/" /etc/cntlm.conf && \
+    sed -i "s/LISTEN/${LISTEN}/" /etc/cntlm.conf && \
+    sed -i "s/PASSLMHASH/${PASSLMHASH}/" /etc/cntlm.conf && \
+    sed -i "s/PASSNTHASH/${PASSNTHASH}/" /etc/cntlm.conf && \
     sed -i "s/PASSNTLMHASH/${PASSNTLMHASH}/" /etc/cntlm.conf
 
 EXPOSE 3128
