@@ -3,6 +3,7 @@ FROM centos:7
 RUN yum -y install http://downloads.sourceforge.net/project/cntlm/cntlm/cntlm%200.92.3/cntlm-0.92.3-1.x86_64.rpm
 
 ENV USERNAME   UNSET
+ENV PASSWORD   UNSET
 ENV DOMAIN     example.com
 ENV PROXY      UNSET
 ENV LISTEN     127.0.0.1:3128
@@ -14,6 +15,7 @@ ENV PASSNTLMV2 UNSET
 EXPOSE 3128
 
 CMD echo "Username ${USERNAME}" > /etc/cntlm.conf && \
+    echo "Password ${PASSWORD}" > /etc/cntlm.conf && \
     echo "Domain ${DOMAIN}" >> /etc/cntlm.conf && \
     echo "Proxy ${PROXY}" >> /etc/cntlm.conf && \
     echo "Listen ${LISTEN}" >> /etc/cntlm.conf && \
