@@ -13,7 +13,6 @@ A password hash needs te be generated once, after which is can be used when runn
 
 You'll seen output like this:
 
-    docker run -e "PASSWORD=mypassword" robertdebock/docker-cntlm /usr/sbin/cntlm -H -u username -d mydomain
     Password: 
     PassLM          1AD35398BE6565DDB5C4EF70C0593492
     PassNT          77B9081511704EE852F94227CF48A793
