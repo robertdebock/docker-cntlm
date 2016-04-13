@@ -31,7 +31,7 @@ This is an example of how to run this container.
     -e "USERNAME=username" \
     -e "DOMAIN=mydomain" \
     -e "PASSNTLMV2=640937B847F8C6439D87155508FA8479" \
-    -e "PROXY=123.123.123.123:8080 \
+    -e "PROXY=123.123.123.123:8080" \
     robertdebock/docker-cntlm
 
 Other settings you might want to use are:
