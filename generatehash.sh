@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 # See if we've received a variable USERNAME.
 if [ ! ${USERNAME} -o ! ${PASSWORD} -o ! ${DOMAIN} ] ; then
