@@ -11,7 +11,7 @@ ENV PASSLM     UNSET
 ENV PASSNT     UNSET
 ENV PASSNTLMV2 UNSET
 
-ADD generatehash.sh
+ADD generatehash.sh /generatehash.sh
 
 EXPOSE 3128
 
