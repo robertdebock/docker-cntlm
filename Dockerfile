@@ -22,5 +22,5 @@ CMD echo "Username ${USERNAME}" > /etc/cntlm.conf && \
     echo "Listen ${LISTEN}" >> /etc/cntlm.conf && \
     if [ ${PASSLM} != "UNSET" ] ; then echo "PassLM ${PASSLM}" >> /etc/cntlm.conf ; fi && \
     if [ ${PASSNT} != "UNSET" ] ; then echo "PassNT ${PASSNT}" >> /etc/cntlm.conf ; fi && \
-    if [ ${PASSNTLMV2} != "UNSET" ; then echo "PassNTLMv2 ${PASSNTLMV2}" >> /etc/cntlm.conf ; fi && \
+    if [ ${PASSNTLMV2} != "UNSET" ] ; then echo "PassNTLMv2 ${PASSNTLMV2}" >> /etc/cntlm.conf ; fi && \
     /usr/sbin/cntlm -c /etc/cntlm.conf -f
