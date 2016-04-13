@@ -18,8 +18,6 @@ You'll seen output like this:
     PassNT          77B9081511704EE852F94227CF48A793
     PassNTLMv2      640937B847F8C6439D87155508FA8479    # Only for user 'username', domain 'mydomain'
 
-That PassNTLMv2 hash (640937B847F8C6439D87155508FA8479 in this example) is required to run the proxy.
-
 ## Running the proxy
 To run the proxy:
 - you'll need the PASSNTLMV2 hash generated in the step before.
