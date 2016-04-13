@@ -22,4 +22,4 @@ RUN sed -i "s/USERNAME/${USERNAME}/" /etc/cntlm.conf && \
 
 EXPOSE 3128
 
-CMD cntlm
+CMD /usr/sbin/cntlm -c /etc/cntlm.conf -f
