@@ -23,4 +23,4 @@ CMD echo "Username ${USERNAME}" > /etc/cntlm.conf && \
     echo "PassLM ${PASSLM}" >> /etc/cntlm.conf && \
     echo "PassNT ${PASSNT}" >> /etc/cntlm.conf && \
     echo "PassNTLMv2 ${PASSNTLMV2}" >> /etc/cntlm.conf && \
-    /usr/sbin/cntlm -c /etc/cntlm.conf -f
+    /usr/sbin/cntlm -v -c /etc/cntlm.conf -f
