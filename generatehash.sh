@@ -8,7 +8,7 @@ fi
 
 # Set the variables in /etc/cntlm.conf
 cat << EOF > /etc/cntlm.conf
-Username"${USERNAME}
+Username ${USERNAME}
 Password ${PASSWORD}
 Domain ${DOMAIN}
 EOF
