@@ -6,7 +6,18 @@ ENV USERNAME
 ENV DOMAIN example.com
 ENV PROXY
 ENV LISTEN 127.0.0.1:3128
+ENV PASSLMHASH
+ENV PASSNTHASH
+ENV PASSNTLMHASH
 
 EXPOSE 3128
+
+RUN sed -i "s/USERNAME/${USERNAME}" /etc/cntlm.conf \
+    sed -i "s/DOMAIN/${DOMAIN}" /etc/cntlm.conf \
+    sed -i "s/PROXY/${PROXY}" /etc/cntlm.conf \
+    sed -i "s/LISTEN/${LISTEN}" /etc/cntlm.conf \
+    sed -i "s/PASSLMHASH/${PASSLMHASH}" /etc/cntlm.conf \
+    sed -i "s/PASSNTHASH/${PASSNTHASH}" /etc/cntlm.conf \
+    sed -i "s/PASSNTLMHASH/${PASSNTLMHASH}" /etc/cntlm.conf
 
 CMD cntlm
