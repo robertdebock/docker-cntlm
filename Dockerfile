@@ -10,7 +10,7 @@ ENV PASSLMHASH   UNSET
 ENV PASSNTHASH   UNSET
 ENV PASSNTLMHASH UNSET
 
-EXPOSE 3128
+ADD etc/cntlm.conf /etc/cntlm.conf
 
 RUN sed -i "s/USERNAME/${USERNAME}/" /etc/cntlm.conf \
     sed -i "s/DOMAIN/${DOMAIN}/" /etc/cntlm.conf \
@@ -19,5 +19,7 @@ RUN sed -i "s/USERNAME/${USERNAME}/" /etc/cntlm.conf \
     sed -i "s/PASSLMHASH/${PASSLMHASH}/" /etc/cntlm.conf \
     sed -i "s/PASSNTHASH/${PASSNTHASH}/" /etc/cntlm.conf \
     sed -i "s/PASSNTLMHASH/${PASSNTLMHASH}/" /etc/cntlm.conf
+
+EXPOSE 3128
 
 CMD cntlm
