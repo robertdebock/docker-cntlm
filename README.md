@@ -49,7 +49,7 @@ You can use this container quite well in a docker-compose, as the proxy where ot
     version: '2'
     services:
       drupal:
-        image: robertdebock/docker-drupal
+        image: robertdebock/docker-centos-openssh
         environment:
           HTTP_PROXY: http://cntlm:3182
           HTTPS_PROXY: http://cntlm:3128
@@ -57,8 +57,7 @@ You can use this container quite well in a docker-compose, as the proxy where ot
           https_proxy: http://cntlm:3128
           no_proxy: localhost,127.0.0.1
         ports:
-          - 80:80
-          - 443:443
+          - "2222:22"
         links:
           - cntlm
       cntlm:
