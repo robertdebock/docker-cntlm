@@ -42,3 +42,29 @@ Other settings you might want to use are:
 | PASSLM | Required for auth method Auth LM and Auth NTLM. |
 
 Find [technical details here](http://cntlm.sourceforge.net/cntlm_manual.pdf).
+
+## Using in Docker Compose
+You can use this container quite well in a docker-compose, as the proxy where other hosts send their web traffic to.
+
+    version: '2'
+    services:
+      drupal:
+        image: robertdebock/docker-drupal
+        environment:
+          HTTP_PROXY: http://cntlm:3182
+          HTTPS_PROXY: http://cntlm:3128
+          http_proxy: http://cntlm:3128
+          https_proxy: http://cntlm:3128
+          no_proxy: localhost,127.0.0.1
+        ports:
+          - 80:80
+          - 443:443
+        links:
+          - cntlm
+      cntlm:
+        image: robertdebock/docker-cntlm
+        environment:
+          USERNAME: username
+          DOMAIN: mydomain
+          PASSNTLMV2: 640937B847F8C6439D87155508FA8479
+          PROXY: 123.123.123.123:8080
