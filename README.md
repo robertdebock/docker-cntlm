@@ -5,11 +5,17 @@ A container to function as a proxy, based on [Cntlm](http://cntlm.sourceforge.ne
 A password hash needs te be generated once, after which is can be used when running the proxy.
 
     docker run \
-      -e "PASSWORD=mypassword" \
       robertdebock/docker-cntlm \
+      /bin/bash -c \
+      "echo Password YoUrPaSsWoRd > /etc/cntlm.conf ; \
       /usr/sbin/cntlm -H \
       -u username \
-      -d mydomain
+      -d mydomain"
+
+Replace:
+- YoUrPaSsWoRd for your own password.
+- username for your own username.
+- mydomain for you own domain.
 
 You'll seen output like this:
 
