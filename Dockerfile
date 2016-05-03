@@ -13,7 +13,8 @@ ENV PASSNTLMV2 UNSET
 
 EXPOSE 3128
 
-CMD echo "Username ${USERNAME}" > /etc/cntlm.conf && \
+CMD echo "Preparing a proxy on ${LISTEN}, connecting to ${PROXY}. (Username: ${USERNAME}, domain: ${DOMAIN})" && \
+    echo "Username ${USERNAME}" > /etc/cntlm.conf && \
     if [ ${PASSWORD} != "UNSET" ] ; then echo "Password ${PASSWORD}" >> /etc/cntlm.conf ; fi && \
     echo "Domain ${DOMAIN}" >> /etc/cntlm.conf && \
     echo "Proxy ${PROXY}" >> /etc/cntlm.conf && \
