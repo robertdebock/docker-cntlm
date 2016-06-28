@@ -1,6 +1,10 @@
-FROM centos:7
+FROM alpine
 
-RUN yum -y install http://downloads.sourceforge.net/project/cntlm/cntlm/cntlm%200.92.3/cntlm-0.92.3-1.x86_64.rpm
+RUN apk add --no-cache curl
+RUN curl -o /cntlm-0.92.3.tar.gz http://kent.dl.sourceforge.net/project/cntlm/cntlm/cntlm%200.92.3/cntlm-0.92.3.tar.gz
+RUN tar -xvzf /cntlm-0.92.3.tar.gz
+RUN apk add --no-cache gcc make musl-dev
+RUN cd /cntlm-0.92.3 ; ./configure ; make ; make install
 
 ENV USERNAME   example
 ENV PASSWORD   UNSET

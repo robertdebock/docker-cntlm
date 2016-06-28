@@ -6,7 +6,7 @@ A password hash needs te be generated once, after which is can be used when runn
 
     docker run \
       robertdebock/docker-cntlm \
-      /bin/bash -c \
+      /bin/sh -c \
       "echo Password YoUrPaSsWoRd > /etc/cntlm.conf ; \
       /usr/sbin/cntlm -H \
       -u username \
