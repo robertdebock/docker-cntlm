@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 echo "Username ${USERNAME}" | tee /etc/cntlm.conf
 
