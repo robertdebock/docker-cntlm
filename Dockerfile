@@ -20,7 +20,7 @@ ENV PASSLM     UNSET
 ENV PASSNT     UNSET
 ENV PASSNTLMV2 UNSET
 
-ADD start.sh
+ADD start.sh start.sh
 
 EXPOSE 3128
 
