@@ -20,6 +20,8 @@ ENV PASSLM     UNSET
 ENV PASSNT     UNSET
 ENV PASSNTLMV2 UNSET
 
+ADD start.sh
+
 EXPOSE 3128
 
 CMD chmod +x start.sh && \
