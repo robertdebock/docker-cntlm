@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh
 
 echo "Username ${USERNAME}" | tee /etc/cntlm.conf
 
@@ -10,7 +10,7 @@ fi
 echo "Domain ${DOMAIN}" | tee -a /etc/cntlm.conf
 
 if [ "${PROXIES}" ] ; then
-  for PROXY in "${PROXIES}" ; do 
+  for PROXY in ${PROXIES} ; do 
     echo "Proxy ${PROXY}" | tee -a /etc/cntlm.conf
   done
 elif [ "${PROXY}" ] ; then
