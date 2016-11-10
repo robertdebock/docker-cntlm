@@ -24,5 +24,5 @@ ADD start.sh start.sh
 
 EXPOSE 3128
 
-CMD chmod +x start.sh && \
-    start.sh
+CMD chmod +x /start.sh && \
+    /start.sh
