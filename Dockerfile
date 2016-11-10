@@ -9,7 +9,7 @@ RUN curl -o /cntlm-0.92.3.tar.gz \
     make && \
     make install && \
     rm /cntlm-0.92.3.tar.gz && \
-    rm /cntlm-0.92.3
+    rm -Rf /cntlm-0.92.3
 
 ENV USERNAME   example
 ENV PASSWORD   UNSET
