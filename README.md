@@ -52,26 +52,8 @@ Other settings you might want to use are:
 Find [technical details here](http://cntlm.sourceforge.net/cntlm_manual.pdf).
 
 ## Using in Docker Compose
-You can use this container quite well in a docker-compose, as the proxy where other hosts send their web traffic to.
+You can use this container quite well in a docker-compose. Docker compose can simply be used to run as a stand-alone proxy. In that case the docker-compose.yml simply saves all variable, and can be started by running:
 
-    version: '2'
-    services:
-      drupal:
-        image: robertdebock/docker-centos-openssh
-        environment:
-          HTTP_PROXY: http://cntlm:3182
-          HTTPS_PROXY: http://cntlm:3128
-          http_proxy: http://cntlm:3128
-          https_proxy: http://cntlm:3128
-          no_proxy: localhost,127.0.0.1
-        ports:
-          - "2222:22"
-        links:
-          - cntlm
-      cntlm:
-        image: robertdebock/docker-cntlm
-        environment:
-          USERNAME: username
-          DOMAIN: mydomain
-          PASSNTLMV2: 640937B847F8C6439D87155508FA8479
-          PROXY: 123.123.123.123:8080
+    docker-compose up
+
+You can also add the cntlm service in a set of other containers, and let (outgoing) traffic from you application go through the cntlm proxy.
