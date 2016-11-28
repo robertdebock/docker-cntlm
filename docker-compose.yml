@@ -1,0 +1,9 @@
+version: '2'
+services:
+  cntlm:
+    image: robertdebock/docker-cntlm
+    environment:
+      USERNAME: username
+      DOMAIN: mydomain
+      PASSNTLMV2: 640937B847F8C6439D87155508FA8479
+      PROXY: 123.123.123.123:8080 234.234.234.234:3128
