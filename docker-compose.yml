@@ -2,6 +2,8 @@ version: '2'
 services:
   cntlm:
     image: robertdebock/docker-cntlm
+    ports:
+      - 3128:3128
     environment:
       USERNAME: username
       DOMAIN: mydomain
