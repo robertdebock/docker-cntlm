@@ -5,7 +5,7 @@ RUN apk add --no-cache curl gcc make musl-dev && \
     tar -xvzf /cntlm-0.92.3.tar.gz && \
     cd /cntlm-0.92.3 && ./configure && make && make install && cd ../ && \
     rm -Rf cntlm-0.92.3.tar.gz cntlm-0.92.3 && \
-    apk del --no-cache curl gcc make musl-dev
+    apk del --no-cache gcc make musl-dev
 
 ENV USERNAME   example
 ENV PASSWORD   UNSET
