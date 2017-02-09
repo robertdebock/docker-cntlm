@@ -28,3 +28,5 @@ CMD echo "Preparing a proxy on ${LISTEN}, connecting to ${PROXY}. (Username: ${U
     if [ ${PASSNT} != "UNSET" ] ; then echo "PassNT ${PASSNT}" >> /etc/cntlm.conf ; fi && \
     if [ ${PASSNTLMV2} != "UNSET" ] ; then echo "PassNTLMv2 ${PASSNTLMV2}" >> /etc/cntlm.conf ; fi && \
     /usr/sbin/cntlm -c /etc/cntlm.conf -f -v
+    
+HEALTHCHECK CMD https_proxy=http://localhost:3128 curl --fail https://google.com/ || exit 1
