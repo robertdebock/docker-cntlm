@@ -18,6 +18,8 @@ ENV PASSNTLMV2 UNSET
 
 EXPOSE 3128
 
+ADD start.sh /start.sh
+
 CMD chmod +x /start.sh && \
     /start.sh
     
