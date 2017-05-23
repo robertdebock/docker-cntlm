@@ -34,4 +34,4 @@ if [ "${PASSNTLMV2}" != "UNSET" ] ; then
   echo "PassNTLMv2 ${PASSNTLMV2}" | tee -a /etc/cntlm.conf
 fi
 
-/usr/sbin/cntlm -c /etc/cntlm.conf -f -v
+/usr/sbin/cntlm -c /etc/cntlm.conf -f
