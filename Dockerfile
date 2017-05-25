@@ -23,4 +23,6 @@ ADD start.sh /start.sh
 CMD chmod +x /start.sh && \
     /start.sh
     
-HEALTHCHECK --interval=5s --timeout=3s CMD http_proxy=http://localhost:3128 curl --fail https://www.google.com/ || exit 1
+HEALTHCHECK --interval=5s --timeout=3s CMD https_proxy=http://localhost:3128 \
+                                           http_proxy=http://localhost:3128 \
+                                           curl --fail https://www.google.com/ || exit 1
