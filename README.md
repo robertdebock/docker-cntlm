@@ -48,6 +48,7 @@ Other settings you might want to use are:
 | PASSNTLMV2 | Required for auth method Auth NTLMv2. |
 | PASSNT | Required for auth method Auth NTLM2SR, Auth NT and Auth NTLM. |
 | PASSLM | Required for auth method Auth LM and Auth NTLM. |
+| OPTIONS | Optional variable to enable cntlm features. I.e. for debugging: "-v". |
 
 Find [technical details here](http://cntlm.sourceforge.net/cntlm_manual.pdf).
 
