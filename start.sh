@@ -9,11 +9,8 @@ fi
 
 echo "Domain ${DOMAIN}" | tee -a /etc/cntlm.conf
 
-if [ "${PROXIES}" ] ; then
-  for PROXY in ${PROXIES} ; do 
-    echo "Proxy ${PROXY}" | tee -a /etc/cntlm.conf
-  done
-elif [ "${PROXY}" ] ; then
+
+if [ "${PROXY}" ] ; then
   echo "Proxy ${PROXY}" | tee -a /etc/cntlm.conf
 else
   echo "No proxy defined!"
