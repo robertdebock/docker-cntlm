@@ -10,7 +10,8 @@ script:
   - docker run $(docker build -q .) /bin/sh -c \
   "echo Password password > /etc/cntlm.conf ; \
   /usr/sbin/cntlm -H -u username -d mydomain"
-  - docker run $(docker build -q .) -d
+  - docker run -e "USERNAME=username" \
+    -e "DOMAIN=domain" -e "PASSNTLMV2=123ABC" $(docker build -q .) -d
 
 notifications:
   email: false
