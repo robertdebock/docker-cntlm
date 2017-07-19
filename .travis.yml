@@ -1,0 +1,16 @@
+sudo: required
+
+services:
+  - docker
+
+install:
+  - docker build .
+
+script:
+  - docker run $(docker build -q .) /bin/sh -c \
+  "echo Password password > /etc/cntlm.conf ; \
+  /usr/sbin/cntlm -H -u username -d mydomain"
+  - docker run $(docker build -q .) -d
+
+notifications:
+  email: false
