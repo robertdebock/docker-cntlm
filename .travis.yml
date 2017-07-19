@@ -11,7 +11,8 @@ script:
   "echo Password password > /etc/cntlm.conf ; \
   /usr/sbin/cntlm -H -u username -d mydomain"
   - docker run -e "USERNAME=username" \
-    -e "DOMAIN=domain" -e "PASSNTLMV2=123ABC" $(docker build -q .) -d
+    -e "DOMAIN=domain" -e "PASSNTLMV2=123ABC" \
+    -e "PROXY=123.123.123.123:3128" $(docker build -q .) -d
 
 notifications:
   email: false
