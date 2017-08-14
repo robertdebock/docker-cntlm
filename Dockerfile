@@ -1,11 +1,11 @@
 FROM alpine
 
-RUN apk add --no-cache curl gcc make musl-dev && \
+RUN apk add --no-cache --virtual .build-deps curl gcc make musl-dev && \
     curl -o /cntlm-0.92.3.tar.gz http://kent.dl.sourceforge.net/project/cntlm/cntlm/cntlm%200.92.3/cntlm-0.92.3.tar.gz && \
     tar -xvzf /cntlm-0.92.3.tar.gz && \
     cd /cntlm-0.92.3 && ./configure && make && make install && \
     rm -Rf cntlm-0.92.3.tar.gz cntlm-0.92.3 && \
-    apk del --no-cache gcc make musl-dev
+    apk del --no-cache .build-deps
 
 ENV USERNAME   example
 ENV PASSWORD   UNSET
