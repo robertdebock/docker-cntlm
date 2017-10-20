@@ -1,4 +1,6 @@
-FROM alpine
+FROM alpine:3.6
+
+LABEL version="1"
 
 RUN apk add --no-cache --virtual .build-deps curl gcc make musl-dev && \
     curl -o /cntlm-0.92.3.tar.gz http://kent.dl.sourceforge.net/project/cntlm/cntlm/cntlm%200.92.3/cntlm-0.92.3.tar.gz && \
@@ -22,4 +24,3 @@ ADD start.sh /start.sh
 
 CMD chmod +x /start.sh && \
     /start.sh
-
