@@ -31,4 +31,9 @@ if [ "${PASSNTLMV2}" != "UNSET" ] ; then
   echo "PassNTLMv2 ${PASSNTLMV2}" | tee -a /etc/cntlm.conf
 fi
 
+if [ "${NOPROXY}" != "UNSET" ] ; then
+  echo "NoProxy ${NOPROXY}" | tee -a /etc/cntlm.conf
+fi
+
+
 /usr/sbin/cntlm -c /etc/cntlm.conf -f ${OPTIONS}
