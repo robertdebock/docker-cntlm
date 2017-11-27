@@ -9,6 +9,9 @@ fi
 
 echo "Domain ${DOMAIN}" | tee -a /etc/cntlm.conf
 
+if [ "${NOPROXY}" ] ; then
+  echo "NoProxy ${PROXY}" | tee -a /etc/cntlm.conf
+fi
 
 if [ "${PROXY}" ] ; then
   echo "Proxy ${PROXY}" | tee -a /etc/cntlm.conf
