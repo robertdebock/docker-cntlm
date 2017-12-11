@@ -3,6 +3,16 @@
 # docker-cntlm
 A container to function as a proxy, based on [Cntlm](http://cntlm.sourceforge.net). Other containers can link to this one for their web access. This container authenticates to an external proxy and can be used by other containers without authentication details.
 
+```
+              +- - - - - - -+  +- - - - - - - - -+
+              | no password |  | password (hash) |
+              +- - - - - - -+  +- - - - - - - - -+
+                      |              |
++------------------+  V   +-------+  V   +-----------------+      +----------+
+| your workstation | ---> | cntlm | ---> | corporate proxy | ---> | internet |
++------------------+      +-------+      +-----------------+      +----------+
+```
+
 ## Generating a password hash
 A password hash needs te be generated once, after which is can be used when running the proxy.
 
