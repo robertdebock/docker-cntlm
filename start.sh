@@ -35,5 +35,4 @@ if [ "${NOPROXY}" != "UNSET" ] ; then
   echo "NoProxy ${NOPROXY}" | tee -a /etc/cntlm.conf
 fi
 
-
 /usr/sbin/cntlm -c /etc/cntlm.conf -f ${OPTIONS}
