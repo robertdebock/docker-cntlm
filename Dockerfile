@@ -22,6 +22,6 @@ ENV NOPROXY    UNSET
 EXPOSE 3128
 
 ADD start.sh /start.sh
+RUN chmod +x /start.sh
 
-CMD chmod +x /start.sh && \
-    /start.sh
+CMD /start.sh
