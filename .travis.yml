@@ -9,6 +9,3 @@ install:
 script:
   - docker run $(docker build -q .) /bin/sh -c "echo Password YoUrPaSsWoRd > /etc/cntlm.conf ; /usr/sbin/cntlm -H -u username -d mydomain"
   - docker run -e "USERNAME=username" -e "DOMAIN=mydomain" -e "PASSNTLMV2=123ABC" -e "PROXY=123.123.123.123:3128" -d $(docker build -q .)
-
-notifications:
-  email: false
