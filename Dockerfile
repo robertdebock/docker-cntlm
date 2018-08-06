@@ -1,6 +1,6 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
-LABEL version="1.2"
+LABEL version="1.3"
 
 RUN apk add --no-cache --virtual .build-deps curl gcc make musl-dev && \
     curl -o /cntlm-0.92.3.tar.gz http://kent.dl.sourceforge.net/project/cntlm/cntlm/cntlm%200.92.3/cntlm-0.92.3.tar.gz && \
