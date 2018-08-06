@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# All values are written to /etc/cntlm.conf and also displayed for ease of use.
+# (Passwords are not displayed).
+
 echo "Username ${USERNAME}" | tee /etc/cntlm.conf
 
 if [ "${PASSWORD}" != "UNSET" ] ; then
@@ -9,11 +12,10 @@ fi
 
 echo "Domain ${DOMAIN}" | tee -a /etc/cntlm.conf
 
-
 if [ "${PROXY}" ] ; then
   echo "Proxy ${PROXY}" | tee -a /etc/cntlm.conf
 else
-  echo "No proxy defined!"
+  echo "No proxy defined! Please set it using the variable \"PROXY\"."
   exit 1
 fi
 
@@ -35,4 +37,5 @@ if [ "${NOPROXY}" != "UNSET" ] ; then
   echo "NoProxy ${NOPROXY}" | tee -a /etc/cntlm.conf
 fi
 
+# Start cntlm after all configuration has been written.
 /usr/sbin/cntlm -c /etc/cntlm.conf -f ${OPTIONS}
