@@ -3,7 +3,7 @@
 # docker-cntlm
 A container to function as a proxy, based on [Cntlm](http://cntlm.sourceforge.net). Other containers can link to this one for their web access. This container authenticates to an external proxy and can be used by other containers without authentication details.
 
-```
+```text
               +- - - - - - -+  +- - - - - - - - -+
               | no password |  | password (hash) |
               +- - - - - - -+  +- - - - - - - - -+
@@ -16,6 +16,7 @@ A container to function as a proxy, based on [Cntlm](http://cntlm.sourceforge.ne
 ## Generating a password hash
 A password hash needs te be generated once, after which is can be used when running the proxy.
 
+```
     docker run \
       robertdebock/docker-cntlm \
       /bin/sh -c \
@@ -23,6 +24,7 @@ A password hash needs te be generated once, after which is can be used when runn
       /usr/sbin/cntlm -H \
       -u username \
       -d mydomain"
+```
 
 Replace:
 - YoUrPaSsWoRd for your own password.
@@ -31,10 +33,12 @@ Replace:
 
 You'll seen output like this:
 
+```
     Password: 
     PassLM          1AD35398BE6565DDB5C4EF70C0593492
     PassNT          77B9081511704EE852F94227CF48A793
     PassNTLMv2      640937B847F8C6439D87155508FA8479    # Only for user 'username', domain 'mydomain'
+```
 
 ## Running the proxy
 To run the proxy:
@@ -42,13 +46,15 @@ To run the proxy:
 - you'll also need the proxy to send traffic to.
 
 This is an example of how to run this container.
- 
+
+``` 
     docker run \
     -e "USERNAME=username" \
     -e "DOMAIN=mydomain" \
     -e "PASSNTLMV2=640937B847F8C6439D87155508FA8479" \
     -e "PROXY=123.123.123.123:8080" \
     robertdebock/docker-cntlm
+```
 
 Other settings you might want to use are:
 
@@ -65,6 +71,8 @@ Find [technical details here](http://cntlm.sourceforge.net/cntlm_manual.pdf).
 ## Using in Docker Compose
 You can use this container quite well in a docker-compose. Docker compose can simply be used to run as a stand-alone proxy. In that case the docker-compose.yml simply saves all variable, and can be started by running:
 
+```
     docker-compose up
+```
 
 You can also add the cntlm service in a set of other containers, and let (outgoing) traffic from you application go through the cntlm proxy.
