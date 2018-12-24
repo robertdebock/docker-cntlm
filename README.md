@@ -16,7 +16,7 @@ A container to function as a proxy, based on [Cntlm](http://cntlm.sourceforge.ne
 ## Generating a password hash
 A password hash needs te be generated once, after which is can be used when running the proxy.
 
-```
+```console
     docker run \
       robertdebock/docker-cntlm \
       /bin/sh -c \
@@ -27,13 +27,13 @@ A password hash needs te be generated once, after which is can be used when runn
 ```
 
 Replace:
-- YoUrPaSsWoRd for your own password.
-- username for your own username.
-- mydomain for you own domain.
+- `YoUrPaSsWoRd` for your own password.
+- `username` for your own username.
+- `mydomain` for you own domain.
 
 You'll seen output like this:
 
-```
+```text
     Password: 
     PassLM          1AD35398BE6565DDB5C4EF70C0593492
     PassNT          77B9081511704EE852F94227CF48A793
@@ -47,7 +47,7 @@ To run the proxy:
 
 This is an example of how to run this container.
 
-``` 
+``` console
     docker run \
     -e "USERNAME=username" \
     -e "DOMAIN=mydomain" \
@@ -71,7 +71,7 @@ Find [technical details here](http://cntlm.sourceforge.net/cntlm_manual.pdf).
 ## Using in Docker Compose
 You can use this container quite well in a docker-compose. Docker compose can simply be used to run as a stand-alone proxy. In that case the docker-compose.yml simply saves all variable, and can be started by running:
 
-```
+```console
     docker-compose up
 ```
 
