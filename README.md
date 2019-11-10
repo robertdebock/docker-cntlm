@@ -1,6 +1,7 @@
-[![](https://images.microbadger.com/badges/image/robertdebock/docker-cntlm.svg)](http://microbadger.com/images/robertdebock/docker-cntlm "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/robertdebock/docker-cntlm.svg)](http://microbadger.com/images/robertdebock/docker-cntlm "Get your own image badge on microbadger.com") [![Build Status](https://travis-ci.org/robertdebock/docker-cntlm.svg?branch=master)](https://travis-ci.org/robertdebock/docker-cntlm)
 
 # docker-cntlm
+
 A container to function as a proxy, based on [Cntlm](http://cntlm.sourceforge.net). Other containers can link to this one for their web access. This container authenticates to an external proxy and can be used by other containers without authentication details.
 
 ```text
@@ -14,16 +15,17 @@ A container to function as a proxy, based on [Cntlm](http://cntlm.sourceforge.ne
 ```
 
 ## Generating a password hash
+
 A password hash needs te be generated once, after which is can be used when running the proxy.
 
 ```console
-    docker run \
-      robertdebock/docker-cntlm \
-      /bin/sh -c \
-      "echo Password YoUrPaSsWoRd > /etc/cntlm.conf ; \
-      /usr/sbin/cntlm -H \
-      -u username \
-      -d mydomain"
+docker run \
+  robertdebock/docker-cntlm \
+  /bin/sh -c \
+  "echo Password YoUrPaSsWoRd > /etc/cntlm.conf ; \
+  /usr/sbin/cntlm -H \
+  -u username \
+  -d mydomain"
 ```
 
 Replace:
@@ -41,6 +43,7 @@ You'll seen output like this:
 ```
 
 ## Running the proxy
+
 To run the proxy:
 - you'll need the PASSNTLMV2 hash generated in the step before.
 - you'll also need the proxy to send traffic to.
@@ -48,12 +51,12 @@ To run the proxy:
 This is an example of how to run this container.
 
 ``` console
-    docker run \
-    -e "USERNAME=username" \
-    -e "DOMAIN=mydomain" \
-    -e "PASSNTLMV2=640937B847F8C6439D87155508FA8479" \
-    -e "PROXY=123.123.123.123:8080" \
-    robertdebock/docker-cntlm
+docker run \
+  -e "USERNAME=username" \
+  -e "DOMAIN=mydomain" \
+  -e "PASSNTLMV2=640937B847F8C6439D87155508FA8479" \
+  -e "PROXY=123.123.123.123:8080" \
+  robertdebock/docker-cntlm
 ```
 
 Other settings you might want to use are:
@@ -69,10 +72,11 @@ Other settings you might want to use are:
 Find [technical details here](http://cntlm.sourceforge.net/cntlm_manual.pdf).
 
 ## Using in Docker Compose
+
 You can use this container quite well in a docker-compose. Docker compose can simply be used to run as a stand-alone proxy. In that case the docker-compose.yml simply saves all variable, and can be started by running:
 
 ```console
-    docker-compose up
+docker-compose up
 ```
 
 You can also add the cntlm service in a set of other containers, and let (outgoing) traffic from you application go through the cntlm proxy.
