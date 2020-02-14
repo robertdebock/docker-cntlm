@@ -13,7 +13,11 @@ fi
 echo "Domain ${DOMAIN}" | tee -a /etc/cntlm.conf
 
 if [ "${PROXY}" ] ; then
-  echo "Proxy ${PROXY}" | tee -a /etc/cntlm.conf
+  for i in $(echo ${PROXY} | sed "s/;/ /g")
+  do
+      echo "Proxy ${i}" | tee -a /etc/cntlm.conf
+      echo "Setting Proxy ${i}"
+  done
 else
   echo "No proxy defined! Please set it using the variable \"PROXY\"."
   exit 1
