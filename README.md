@@ -65,6 +65,7 @@ Other settings you might want to use are:
 | --- | --- |
 | LISTEN | The IP/hostname and port (separated by a colon) to listen to. I.e. "127.0.0.1:8080" |
 | PASSNTLMV2 | Required for auth method Auth NTLMv2. |
+| AUTH   | Auth parameter. |
 | PASSNT | Required for auth method Auth NTLM2SR, Auth NT and Auth NTLM. |
 | PASSLM | Required for auth method Auth LM and Auth NTLM. |
 | OPTIONS | Optional variable to enable cntlm features. I.e. for debugging: "-v". |

@@ -21,6 +21,10 @@ fi
 
 echo "Listen ${LISTEN}" | tee -a /etc/cntlm.conf
 
+if [ "${AUTH}" != "UNSET" ] ; then
+  echo "Auth ${AUTH}" | tee -a /etc/cntlm.conf
+fi
+
 if [ "${PASSLM}" != "UNSET" ] ; then
   echo "PassLM ${PASSLM}" | tee -a /etc/cntlm.conf
 fi
