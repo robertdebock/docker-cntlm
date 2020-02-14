@@ -10,20 +10,9 @@ RUN apk add curl && \
     rm -Rf cntlm-0.92.3.tar.gz cntlm-0.92.3 && \
     apk del --no-cache .build-deps
 
-ENV USERNAME   example
-ENV PASSWORD   UNSET
-ENV DOMAIN     example.com
-ENV PROXY      example.com:3128
-ENV LISTEN     0.0.0.0:3128
-ENV AUTH       UNSET
-ENV PASSLM     UNSET
-ENV PASSNT     UNSET
-ENV PASSNTLMV2 UNSET
-ENV NOPROXY    UNSET
-
 EXPOSE 3128
 
 ADD start.sh /start.sh
 RUN chmod +x /start.sh
 
-CMD /start.sh
+ENTRYPOINT ["/start.sh"]
