@@ -7,5 +7,5 @@ install:
   - docker build .
 
 script:
-  - docker run $(docker build -q .) /bin/sh -c "echo Password YoUrPaSsWoRd > /etc/cntlm.conf ; /usr/sbin/cntlm -H -u username -d mydomain"
+  - echo "YoUrPaSsWoRd" | docker run -e "USERNAME=username" -e "DOMAIN=mydomain" -e "PROXY=anything:1234" --rm -i $(docker build -q .) -H
   - docker run -e "USERNAME=username" -e "DOMAIN=mydomain" -e "PASSNTLMV2=123ABC" -e "PROXY=123.123.123.123:3128" -d $(docker build -q .)
