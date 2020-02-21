@@ -1,5 +1,6 @@
 FROM alpine:3
 
+LABEL maintainer="Robert de Bock <robert@meinit.nl>"
 LABEL version="1.3"
 
 RUN apk add curl && \
