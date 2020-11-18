@@ -1,6 +1,14 @@
 ---
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-docker-flake8
-    rev: ''  # Fill this in with a current revision
+  - repo: git://github.com/pre-commit/pre-commit-hooks
+    # sha: master  # Use the ref you want to point at
+    rev: v3.3.0
     hooks:
-      - id: flake8-docker-not-for-production
+      - { id: check-case-conflict }
+      - { id: check-merge-conflict }
+      - { id: check-symlinks }
+      - { id: check-json }
+      - { id: check-yaml }
+      - { id: detect-private-key }
+      - { id: end-of-file-fixer }
+      - { id: trailing-whitespace }
