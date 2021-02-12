@@ -86,7 +86,7 @@ If you want to use an existing `cntlm.conf` you can mount it directly by setting
 docker run --restart always --name cntlm \
   -e "CUSTOM_CONFIG=true" \
   -p 3128:3128 \
-  -v /path/to/cntlm.conf:/etc/cntlm.conf \
+  -v /etc/cntlm.conf:/path/to/your/cntlm.conf \
   robertdebock/docker-cntlm
 ```
 
