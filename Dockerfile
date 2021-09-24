@@ -2,6 +2,7 @@ FROM alpine:3
 
 LABEL maintainer="Robert de Bock <robert@meinit.nl>"
 LABEL version="1.3"
+LABEL build_date="2021-09-24"
 
 RUN apk add curl && \
     apk add --no-cache --virtual .build-deps gcc make musl-dev && \
