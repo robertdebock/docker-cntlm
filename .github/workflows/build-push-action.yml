@@ -25,4 +25,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: robertdebock/github-action-molecule:${{ env.tag }}
+          tags: robertdebock/docker-cntlm:${{ env.tag }}
