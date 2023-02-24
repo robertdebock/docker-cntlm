@@ -1,6 +1,6 @@
 # docker-cntlm
 
-[![Build badge](https://images.microbadger.com/badges/image/robertdebock/docker-cntlm.svg)](http://microbadger.com/images/robertdebock/docker-cntlm "Get your own image badge on microbadger.com") [![Build Status](https://travis-ci.org/robertdebock/docker-cntlm.svg?branch=master)](https://travis-ci.org/robertdebock/docker-cntlm)
+[![build-push](https://github.com/robertdebock/docker-cntlm/actions/workflows/build-push-action.yml/badge.svg)](https://github.com/robertdebock/docker-cntlm/actions/workflows/build-push-action.yml)
 
 A container to function as a proxy, based on [Cntlm](http://cntlm.sourceforge.net). Other containers can link to this one for their web access. This container authenticates to an external proxy and can be used by other containers without authentication details.
 
