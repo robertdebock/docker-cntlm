@@ -2,7 +2,7 @@
 
 [![build-push](https://github.com/robertdebock/docker-cntlm/actions/workflows/build-push-action.yml/badge.svg)](https://github.com/robertdebock/docker-cntlm/actions/workflows/build-push-action.yml)
 
-A container to function as a proxy, based on [Cntlm](http://cntlm.sourceforge.net). Other containers can link to this one for their web access. This container authenticates to an external proxy and can be used by other containers without authentication details.
+A container to function as a proxy, based on [CNTLM](http://cntlm.sourceforge.net). Other systemc can connect to this proxy for their web access. This container authenticates to an external proxy and can be used by others without authentication details.
 
 ```text
               +- - - - - - -+  +- - - - - - - - -+
@@ -20,9 +20,9 @@ A password hash needs te be generated once, after which is can be used when runn
 
 ```console
 docker run \
-  -e "USERNAME=username" \
-  -e "DOMAIN=mydomain" \
-  -e "PROXY=anything:1234" \
+  -e "USERNAME=my_username" \
+  -e "DOMAIN=example.com" \
+  -e "PROXY=proxy.example.com:3128" \
   --rm -it robertdebock/docker-cntlm -H
 ```
 
@@ -30,8 +30,10 @@ Now you have to enter your password (which will not be displayed) and press ente
 
 Replace:
 
-- `username` for your own username.
-- `mydomain` for you own domain.
+- `my_username` for your own username.
+- `example.com` for you own domain.
+
+> The `PROXY` variable can have any value when generating a hash. For running CNTLM, a correct value is required.
 
 You'll seen output like this:
 
@@ -53,32 +55,41 @@ This is an example of how to run this container.
 
 ``` console
 docker run --restart always --name cntlm \
-  -e "USERNAME=username" \
-  -e "DOMAIN=mydomain" \
-  -e "PASSNTLMV2=640937B847F8C6439D87155508FA8479" \
-  -e "PROXY=123.123.123.123:8080" \
+  -e "USERNAME=my_username" \
+  -e "DOMAIN=example.com" \
+  -e "PASSNTLMV2=MY_HASH_MY_HASH_MY_HASH_MY_HASH_" \
+  -e "PROXY=proxy.example.com:3128" \
   -p 3128:3128 \
   robertdebock/docker-cntlm
 ```
 
-Other settings you might want to use are:
+# Required variabled.
 
-| Variable      | Description                                                                                                                                | Example                         |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- |
-| USERNAME      | Your username for the proxy.                                                                                                               |                                 |
-| PASSWORD      | The password of the user. Should be avoided to use. Go with NTLM tokens.                                                                   |                                 |
-| DOMAIN        | Your domain for the proxy.                                                                                                                 |                                 |
-| LISTEN        | The IP/hostname and port (separated by a colon) to listen to.                                                                              | `127.0.0.1:8080`                |
-| PASSNTLMV2    | Required for auth method Auth NTLMv2.                                                                                                      |                                 |
-| AUTH          | Auth parameter.                                                                                                                            |                                 |
-| PASSNT        | Required for auth method Auth NTLM2SR, Auth NT and Auth NTLM.                                                                              |                                 |
-| PASSLM        | Required for auth method Auth LM and Auth NTLM.                                                                                            |                                 |
-| PROXY         | A proxy list the traffic is send to. Can be a list separated by `;`. Will be splitted into multiple `Proxy ...` lines in the `cntlm.conf`. | `localhost:3128;localhost:3129` |
-| NOPROXY       | For address which should not be routed through the proxy. Comma separated list.                                                            | `127.0.0.1, 10.*`               |
-| OPTIONS       | Optional variable to enable cntlm features.                                                                                                | `-v` for debugging              |
-| CUSTOM_CONFIG | If you want to manually mount a config you can set this variable to skip all settings. Should be mounted into `etc/cntlm.conf`.            |                                 |
+|VARIABLE    |EXAMPLE                           |DESCRIPTION                                  |
+|------------|----------------------------------|---------------------------------------------|
+|`USERNAME`  |`my_username`                     |Your username, without a domain (`@` or `\`).|
+|`DOMAIN`    |`example.com`                     |The domain where your user lives.            |
+|`PASSNTLMV2`|`640937B847F8C6439D87155508FA8479`|The generated hash, see above.               |
+|`PROXY` *   |`proxy.example.com`               |The hostname (or IP) of your corporate proxy.|
 
-Find [technical details here](http://cntlm.sourceforge.net/cntlm_manual.pdf).
+* = `PROXY` can be a string (single) or a list (mulitple). For example: `example.com:3128;example.com:3129`.
+
+> The `-p 3138:3128` maps the port on a host (left from colon) to a port on the container (right from colon).
+
+# Optional variables
+
+
+|VARIABLE     |EXAMPLE          |DESCRIPTION                                                                    |
+|-------------|-----------------|-------------------------------------------------------------------------------|
+|LISTEN       |`127.0.0.1:8080` |The IP/hostname and port (separated by a colon) to listen to.                  |
+|AUTH         |                 |Auth parameter.                                                                |
+|PASSNT       |                 |Required for auth method Auth NTLM2SR, Auth NT and Auth NTLM.                  |
+|PASSLM       |                 |equired for auth method Auth LM and Auth NTLM.                                 |
+|NOPROXY      |`127.0.0.1, 10.*`|For address which should not be routed through the proxy. Comma separated list.|
+|OPTIONS      |`-v`             |Optional variable to enable cntlm features.                                    |
+|CUSTOM_CONFIG|                 |                                                                               |
+
+> Find [technical details here](http://cntlm.sourceforge.net/cntlm_manual.pdf).
 
 ## Mount custom config
 
@@ -100,4 +111,4 @@ You can use this container quite well in a docker-compose. Docker compose can si
 docker-compose up
 ```
 
-You can also add the cntlm service in a set of other containers, and let (outgoing) traffic from you application go through the cntlm proxy.
+You can add the CNTLM service in a set of other containers, and let (outgoing) traffic from you application go through the cntlm proxy.
