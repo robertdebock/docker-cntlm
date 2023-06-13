@@ -1,6 +1,6 @@
 ---
 repos:
-  - repo: git://github.com/pre-commit/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     # sha: master  # Use the ref you want to point at
     rev: v3.3.0
     hooks:
